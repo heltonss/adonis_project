@@ -3,8 +3,6 @@ const File = use('App/Models/File');
 const Helpers = use('Helpers');
 
 class FileController {
-
-
   async store({ request, response }) {
     try {
       if (!request.file('file')) return;
@@ -35,7 +33,13 @@ class FileController {
     }
   }
 
-  async destroy({ params, request, response }) { }
+  async show({ params, response }) {
+    const file = await File.findOrFail(params.id);
+
+    return response.download(Helpers.tmpPath(`uploads/${file.file}`));
+  }
+
+  async destroy({ params, request, response }) {}
 }
 
 module.exports = FileController;
