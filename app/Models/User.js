@@ -8,7 +8,7 @@ const Hash = use('Hash');
 
 class User extends Model {
   static boot() {
-    super.boot();
+    super.boot()
 
     /**
      * A hook to hash the user password before saving
@@ -41,6 +41,10 @@ class User extends Model {
 
   tasks() {
     return this.hasMany('App/Models/Task');
+  }
+
+  addresses() {
+    return this.hasMany('App/Models/UserAddress')
   }
 }
 
