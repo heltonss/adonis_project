@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +21,9 @@ const providers = [
   '@adonisjs/validator/providers/ValidatorProvider',
   '@adonisjs/antl/providers/AntlProvider',
   'adonis-sentry/providers/Sentry',
-]
+  '@adonisjs/redis/providers/RedisProvider',
+  'adonis-kue/providers/KueProvider'
+];
 
 /*
 |--------------------------------------------------------------------------
@@ -33,8 +35,9 @@ const providers = [
 |
 */
 const aceProviders = [
-  '@adonisjs/lucid/providers/MigrationsProvider'
-]
+  '@adonisjs/lucid/providers/MigrationsProvider',
+  'adonis-kue/providers/CommandsProvider'
+];
 
 /*
 |--------------------------------------------------------------------------
@@ -48,7 +51,7 @@ const aceProviders = [
 |   { Route: 'Adonis/Src/Route' }
 |
 */
-const aliases = {}
+const aliases = {};
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +61,15 @@ const aliases = {}
 | Here you store ace commands for your package
 |
 */
-const commands = []
+const commands = [];
+/*
+|--------------------------------------------------------------------------
+| jobs
+|--------------------------------------------------------------------------
+|
+| Here you store your queue jobs
+|
+*/
+const jobs = ['App/Jobs/NewTaskMail'];
 
-module.exports = { providers, aceProviders, aliases, commands }
+module.exports = { providers, aceProviders, aliases, commands, jobs };
